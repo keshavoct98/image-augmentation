@@ -1,8 +1,0 @@
-
-References -
-https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html
-https://cristianpb.github.io/blog/image-rotation-opencv
-https://stackabuse.com/affine-image-transformations-in-python-with-numpy-pillow-and-opencv/
-https://medium.com/image-vision/noise-in-digital-image-processing-55357c9fab71
-https://numpy.org/doc/
-https://docs.opencv.org/master/
