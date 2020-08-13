@@ -3,31 +3,44 @@ import numpy as np
 
 
 def crop(img, point1, point2, box = None):
+    ''' Returns cropped image from point1 to point2. If box coordinates are passed, new bounding box 
+    coordinates are calculated and returned.'''
     
-    img_new = img.copy()
+    assert ((type(point1) == tuple and len(point1) == 2) and (type(point2) == tuple and len(point2) == 2)
+            ), 'point1 and point2 must be of type tuple and must have a lenght of two.'
+    assert (point1[0] >= 0 and point2[0] < img.shape[1]) and (point1[1] >= 0 and point2[1] < img.shape[0]
+            ), 'point1 and point2 must not exceed image dimensions.'
+    assert (point2[0] > point1[0]) and (point2[1] > point1[1]), 'point2 must be greater than point1.' 
+    
     x1, y1 = point1[0], point1[1]
     x2, y2 = point2[0], point2[1]
-    img_new = img_new[y1:y2, x1:x2]
+    img_new = img.copy()
+    img_new = img_new[y1:y2, x1:x2]    # image cropped
     
     if box == None:
         return img_new
     
     else:
+        ''' New bounding box coordinates after calculated image cropping.'''
+        
+        assert (type(box) == list and len(box) == 4
+               ), 'box argument must be of type list and must have a lenght of four.'
+        assert (box[0] < box[2] and box[1] < box[3]
+               ), 'top-left coordinates of bounding box must be smaller than bottom-right coordinates.' 
+        
         box_new = []
         
-        if ((box[0] - x1) <= 0 or (box[0] - x1) >= img_new.shape[1]) and ((
-            box[2] - x1) <= 0 or (box[2] - x1) >= img_new.shape[1]):
-            box_new = [0, 0, 0, 0]
-            
-        elif ((box[1] - y1) <= 0 or (box[1] - y1) >= img_new.shape[0]) and ((
-            box[3] - y1) <= 0 or (box[3] - y1) >= img_new.shape[0]):
-            box_new = [0, 0, 0, 0]
+        if (x1 >= box[0] and x2 <= box[2]) and (y1 >= box[1] and y2 <= box[3]):
+            box_new = [0, 0, img_new.shape[1], img_new.shape[0]]
             
         else:
             box_new.append(min(max(0, box[0] - x1), img_new.shape[1]-1))
             box_new.append(min(max(0, box[1] - y1), img_new.shape[0]-1))
             box_new.append(min(max(0, box[2] - x1), img_new.shape[1]-1))
             box_new.append(min(max(0, box[3] - y1), img_new.shape[0]-1))
+        
+        if (box_new[0] == box_new[2]) and (box_new[1] == box_new[3]):
+            box_new = [0,0,0,0]
             
         return img_new, box_new
     
