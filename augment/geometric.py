@@ -7,10 +7,10 @@ def crop(img, point1, point2, box = None):
     coordinates are calculated and returned.'''
     
     assert ((type(point1) == tuple and len(point1) == 2) and (type(point2) == tuple and len(point2) == 2)
-            ), 'point1 and point2 must be of type tuple and must have a lenght of two.'
+            ), "point1 and point2 must be of type tuple and must have a lenght of two."
     assert (point1[0] >= 0 and point2[0] < img.shape[1]) and (point1[1] >= 0 and point2[1] < img.shape[0]
-            ), 'point1 and point2 must not exceed image dimensions.'
-    assert (point2[0] > point1[0]) and (point2[1] > point1[1]), 'point2 must be greater than point1.' 
+            ), "point1 and point2 must not exceed image dimensions."
+    assert (point2[0] > point1[0]) and (point2[1] > point1[1]), "point2 must be greater than point1."
     
     x1, y1 = point1[0], point1[1]
     x2, y2 = point2[0], point2[1]
@@ -24,9 +24,9 @@ def crop(img, point1, point2, box = None):
         ''' New bounding box coordinates after calculated image cropping.'''
         
         assert (type(box) == list and len(box) == 4
-               ), 'box argument must be of type list and must have a lenght of four.'
+               ), "box argument must be of type list and must have a lenght of four."
         assert (box[0] < box[2] and box[1] < box[3]
-               ), 'top-left coordinates of bounding box must be smaller than bottom-right coordinates.' 
+               ), "top-left coordinates of bounding box must be smaller than bottom-right coordinates."
         
         box_new = []
         
@@ -45,37 +45,30 @@ def crop(img, point1, point2, box = None):
         return img_new, box_new
     
 
-def rotate(img, angle, box = None, keep_resolution = True):
+def rotate(img, angle, keep_resolution = True, box = None):
+    
+    assert (type(angle) == int or type(angle) == float), "argument angle must be of type 'int' or 'float'."
 
     img_new = img.copy()
     h, w = img_new.shape[:2]
     M = cv2.getRotationMatrix2D((w / 2, h / 2), angle, 1.0)
     cos, sin = np.abs(M[0, 0]), np.abs(M[0, 1])
     
-    if box == None:
-        if keep_resolution == True:
+    if keep_resolution == True:
             img_new = cv2.warpAffine(img_new, M, (w, h))
         
-        else:
-            nW, nH = int((h * sin) + (w * cos)), int((h * cos) + (w * sin))
-            M[0, 2] += (nW / 2) - (w / 2)
-            M[1, 2] += (nH / 2) - (h / 2)
-            img_new = cv2.warpAffine(img_new, M, (nW, nH))
-            
+    else:
+        nW, nH = int((h * sin) + (w * cos)), int((h * cos) + (w * sin))
+        M[0, 2] += (nW / 2) - (w / 2)
+        M[1, 2] += (nH / 2) - (h / 2)
+        img_new = cv2.warpAffine(img_new, M, (nW, nH))
+    
+    if box == None:
         return img_new
 
     else:
         box_new = []
         box_temp = [box[0], box[1], box[0], box[3], box[2], box[3], box[2], box[1]]
-        
-        if keep_resolution == True:
-            img_new = cv2.warpAffine(img_new, M, (w, h))
-
-        else:
-            nW, nH = int((h * sin) + (w * cos)), int((h * cos) + (w * sin))
-            M[0, 2] += (nW / 2) - (w / 2)
-            M[1, 2] += (nH / 2) - (h / 2)
-            img_new = cv2.warpAffine(img_new, M, (nW, nH))
 
         box_temp[0:2] = np.dot(M, [box_temp[0], box_temp[1], 1])[0:2]
         box_temp[2:4] = np.dot(M, [box_temp[2], box_temp[3], 1])[0:2]
