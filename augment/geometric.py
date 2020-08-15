@@ -7,10 +7,10 @@ def crop(img, point1, point2, box = None):
     If box coordinates are passed, new bounding box 
     coordinates are calculated and returned.'''
     
-    assert ((type(point1) == tuple and len(point1) == 2) and (type(point2) == tuple and len(point2) == 2)
-            ), "'point1' and 'point2' must be of type tuple and must have a lenght of two."
-    assert (point1[0] >= 0 and point2[0] < img.shape[1]) and (point1[1] >= 0 and point2[1] < img.shape[0]
-            ), "'point1' and 'point2' must not exceed image dimensions."
+    assert ((type(point1) == tuple and len(point1) == 2) and (type(point2) == tuple and len(point2) == 2)), "'point1' and 'point2' must be of type tuple and must have a lenght of two."
+    
+    assert (point1[0] >= 0 and point2[0] < img.shape[1]) and (point1[1] >= 0 and point2[1] < img.shape[0]), "'point1' and 'point2' must not exceed image dimensions."
+    
     assert (point2[0] > point1[0]) and (point2[1] > point1[1]), "'point2' must be greater than 'point1'."
     
     x1, y1 = point1[0], point1[1]
@@ -25,10 +25,9 @@ def crop(img, point1, point2, box = None):
         ''' New bounding box coordinates calculation
         after image cropping.'''
         
-        assert (type(box) == list and len(box) == 4
-               ), "Argument 'box' must be of type list and must have a lenght of four."
-        assert (box[0] < box[2] and box[1] < box[3]
-               ), "Top-left coordinates of bounding box must be smaller than bottom-right coordinates."
+        assert (type(box) == list and len(box) == 4), "Argument 'box' must be of type list and must have a lenght of four."
+        
+        assert (box[0] < box[2] and box[1] < box[3]), "Top-left coordinates of bounding box must be smaller than bottom-right coordinates."
         
         box_new = []
         
@@ -53,6 +52,7 @@ def rotate(img, angle, keep_resolution = True, box = None):
     is True, otherwise it changes accordingly.'''
     
     assert (type(angle) == int or type(angle) == float), "Argument 'angle' must be of type int or float."
+    
     assert (type(keep_resolution) == bool), "Argument 'keep_resolution' can only be True or False."
 
     img_new = img.copy()
@@ -75,10 +75,9 @@ def rotate(img, angle, keep_resolution = True, box = None):
     else:
         ''' New bounding box coordinates calculation after image rotation.'''
         
-        assert (type(box) == list and len(box) == 4
-               ), "Argument 'box' must be of type list and must have a lenght of four."
-        assert (box[0] < box[2] and box[1] < box[3]
-               ), "Top-left coordinates of bounding box must be smaller than bottom-right coordinates."
+        assert (type(box) == list and len(box) == 4), "Argument 'box' must be of type list and must have a lenght of four."
+        
+        assert (box[0] < box[2] and box[1] < box[3]), "Top-left coordinates of bounding box must be smaller than bottom-right coordinates."
         
         box_new = []
         box_temp = [box[0], box[1], box[0], box[3], box[2], box[3], box[2], box[1]]
@@ -108,8 +107,8 @@ def scale(img, fx, fy, keep_resolution = False, box = None):
     ''' Scales the image resolution w.r.t. x and y axis to
     the given scaling factor 'fx' and 'fy'.'''
     
-    assert ((type(fx) == int or type(fx) == float) and (
-        type(fy) == int or type(fy) == float)), "Arguments 'fx' and 'fy' must be of type int or float."
+    assert ((type(fx) == int or type(fx) == float) and (type(fy) == int or type(fy) == float)), "Arguments 'fx' and 'fy' must be of type int or float."
+    
     assert (fx > 0 and fy > 0), "Arguments 'fx' and 'fy' must be greater than 0"
 
     img_new = img.copy()
@@ -132,10 +131,9 @@ def scale(img, fx, fy, keep_resolution = False, box = None):
         ''' New bounding box coordinates calculation
         after image cropping.'''
         
-        assert (type(box) == list and len(box) == 4
-               ), "Argument 'box' must be of type list and must have a lenght of four."
-        assert (box[0] < box[2] and box[1] < box[3]
-               ), "Top-left coordinates of bounding box must be smaller than bottom-right coordinates."
+        assert (type(box) == list and len(box) == 4), "Argument 'box' must be of type list and must have a lenght of four."
+        
+        assert (box[0] < box[2] and box[1] < box[3]), "Top-left coordinates of bounding box must be smaller than bottom-right coordinates."
             
         box_new = []
         box_new.append(box[0] * fx)
@@ -164,8 +162,8 @@ def shear(img, shear_val, axis = 0, box = None):
     with shear magnitude equal to 'shear_val'. x or
     y axis can be choosen with 'axis' argument.'''
 
-    assert (type(shear_val) == int or type(shear_val) == float
-           ), "Argument 'shear_val' must be of type int or float."
+    assert (type(shear_val) == int or type(shear_val) == float), "Argument 'shear_val' must be of type int or float."
+    
     assert (axis == 0 or axis == 1), "Value of argument 'axis' must be either 0 or 1."
 
     img_new = img.copy()
@@ -186,10 +184,9 @@ def shear(img, shear_val, axis = 0, box = None):
         ''' New bounding box coordinates calculation
         after image cropping.'''
         
-        assert (type(box) == list and len(box) == 4
-               ), "Argument 'box' must be of type list and must have a lenght of four."
-        assert (box[0] < box[2] and box[1] < box[3]
-               ), "Top-left coordinates of bounding box must be smaller than bottom-right coordinates."
+        assert (type(box) == list and len(box) == 4), "Argument 'box' must be of type list and must have a lenght of four."
+        
+        assert (box[0] < box[2] and box[1] < box[3]), "Top-left coordinates of bounding box must be smaller than bottom-right coordinates."
         
         box_new = box.copy()
         box_temp = [box[0], box[1], box[0], box[3], box[2], box[3], box[2], box[1]]
@@ -227,8 +224,7 @@ def translate(img, tx, ty, box = None):
     '''Translates image w.r.t. x and y axis
     to the given translation factor 'tx' and 'ty'.'''
 
-    assert ((type(tx) == int or type(tx) == float) and (
-        type(ty) == int or type(ty) == float)), "Arguments 'tx' and 'tx' must be of type int or float."
+    assert ((type(tx) == int or type(tx) == float) and (type(ty) == int or type(ty) == float)), "Arguments 'tx' and 'tx' must be of type int or float."
 
     img_new = img.copy()
     M = np.float32([[1, 0, tx],
@@ -242,10 +238,9 @@ def translate(img, tx, ty, box = None):
         ''' New bounding box coordinates calculation
         after image cropping.'''
         
-        assert (type(box) == list and len(box) == 4
-               ), "Argument 'box' must be of type list and must have a lenght of four."
-        assert (box[0] < box[2] and box[1] < box[3]
-               ), "Top-left coordinates of bounding box must be smaller than bottom-right coordinates."
+        assert (type(box) == list and len(box) == 4), "Argument 'box' must be of type list and must have a lenght of four."
+        
+        assert (box[0] < box[2] and box[1] < box[3]), "Top-left coordinates of bounding box must be smaller than bottom-right coordinates."
         
         box_new = []
         box_new.append(min(max(0, box[0] + tx), img_new.shape[1]-1))
