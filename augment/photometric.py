@@ -2,7 +2,14 @@ import cv2
 import numpy as np
 
 
-def bright_contrast(img, alpha, beta):
+def brightness_contrast(img, alpha = 1.5, beta = 0):
+    '''Brightness and contrast of the passed image 
+    are modified using 'alpha' and 'beta' arguments.'''
+    
+    assert (type(alpha) == int or type(alpha) == float) and (
+        type(beta) == int or type(beta) == float), "Arguments 'alpha' and 'beta' must be of type int or float."
+    assert alpha >= 0, "Argument 'alpha' must be greater than or equal to 0."
+    
     img_new = img.astype('int')
     
     img_new = img_new * alpha + beta
@@ -13,7 +20,14 @@ def bright_contrast(img, alpha, beta):
     return img_new
 
 
-def colorSpace(img, colorspace):
+def colorSpace(img, colorspace = 'hsv'):
+    '''Change the colorspace of given image to
+    the provided 'colorspace' argument.'''
+    
+    assert type(colorspace) == str, "Argument 'colorspace' must be of type str."
+    assert colorspace in (['hsv', 'ycrcb', 'lab']
+                     ), "Argument 'colorspace' can only be one of the following types - 'hsv', 'ycrcb' 'lab'."
+    
     img_new = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
     
     if colorspace == 'hsv':
