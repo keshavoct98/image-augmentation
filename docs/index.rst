@@ -12,7 +12,7 @@ User Guide
     * Photometric features
     * Geometric features
     * Kernel based features
-    
+
 
 ##################
 Installation guide
@@ -36,7 +36,7 @@ Features
 #. **Geometric Features** - Image augmentation with geometric transformation of images.
 
     * crop(img, point1, point2, box = None)
-        Returns cropped image from point1 to point2.
+        Returns cropped image.
 
         #. img = *numpy.ndarray*
                     Image to be cropped.
@@ -55,11 +55,51 @@ Features
                     Image to be rotated.
         #. angle = *integer or float*
                     value of angle at which image is to be rotated.
-        #. keep_resolution = *bool*, optional
+        #. keep_resolution = *bool*, default = True, optional
                     If True, resolution of image remains same after rotation, else resolution is modified.
         #. box = *list*, optional
-                    Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along  with output image.
+                    Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.
 
+
+    * scale(img, fx, fy, keep_resolution = False, box = None)
+        Returns scaled image.
+
+        #. img = *numpy.ndarray*
+                    Image to be rotated.
+        #. fx = *integer or float*
+                    scaling value for x-axis.
+        #. fy = *integer or float*
+                    scaling value for y-axis.
+        #. keep_resolution = *bool*, default = False, optional
+                    If True, resolution of image remains same after scaling, extra region is cropped.
+        #. box = *list*, optional
+                    Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.
+
+
+    * shear(img, shear_val, axis = 0, box = None)
+        Returns sheared image along given axis.
+
+        #. img = *numpy.ndarray*
+                    Image to be sheared.
+        #. shear_val = *integer or float*
+                    shearing value for given axis.
+        #. axis = {0,1}, default = 0
+                    0 for shear along x-axis, 1 for shear along y-axis.
+        #. box = *list*, optional
+                    Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.
+
+
+    * translate(img, tx, ty, box = None)
+        Returns translated image.
+
+        #. img = *numpy.ndarray*
+                    Image to be sheared.
+        #. tx = *integer or float*
+                    translation magnitude along x-axis.
+        #. ty = *integer or float*
+                    translation magnitude along y-axis.
+        #. box = *list*, optional
+                    Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.
 
 
 

@@ -8,7 +8,7 @@ def blur(img, blur_type = 'avg', ksize = (5, 5), median_ksize = 5, gaussian_sigm
     blurring can be performed - Average, Gaussian,
     Median and bilateral.'''
     
-    assert blur_type in ['avg', 'gaussian', 'median', 'bilateral'], "Argument 'blur_type' can only have one of these four vales - 'avg', 'gaussian', 'median', 'bilateral'."
+    assert blur_type in ['avg', 'gaussian', 'median'], "Argument 'blur_type' can only have one of these three vales - 'avg', 'gaussian', 'median'."
     
     assert type(ksize) == tuple and len(ksize) == 2 and (ksize[0] > 0 and ksize[0] % 2 != 0) and (ksize[1] > 0 and ksize[1] % 2 != 0), "Argument 'ksize' can only be of type tuple with length equal to two and 'ksize' values must be odd positive integers."
     
@@ -95,9 +95,9 @@ def sharpen(img):
     
     img_new = img.copy()
     
-    kernel = np.array([[0, -1, 0], 
-                   [-1, 5,-1], 
-                   [0, -1, 0]])
+    kernel = np.array([[-1, -1, -1], 
+                   [-1, 9,-1], 
+                   [-1, -1, -1]])
     img_new = cv2.filter2D(img_new, -1, kernel)
     
     return img_new

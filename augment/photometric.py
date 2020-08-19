@@ -31,18 +31,18 @@ def colorSpace(img, colorspace = 'hsv'):
     img_new = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
     
     if colorspace == 'hsv':
-        img_new = cv2.cvtColor(img_new, cv2.COLOR_BGR2HSV)
+        img_new = cv2.cvtColor(img_new, cv2.COLOR_RGB2HSV)
     
     elif colorspace == 'ycrcb':
-        img_new = cv2.cvtColor(img_new, cv2.COLOR_BGR2YCrCb)
+        img_new = cv2.cvtColor(img_new, cv2.COLOR_RGB2YCrCb)
     
     elif colorspace == 'lab':
-        img_new = cv2.cvtColor(img_new, cv2.COLOR_BGR2Lab)
+        img_new = cv2.cvtColor(img_new, cv2.COLOR_RGB2Lab)
         
     return img_new
 
 
-def addNoise(img, noise_type = 'gaussian', mean = 0, var = 0.01, sp_ratio = 0.5, noise_amount = 0.02):
+def addNoise(img, noise_type = 'gaussian', mean = 0, var = 0.05, sp_ratio = 0.5, noise_amount = 0.02):
     '''Add noise to the passed image. gaussian, salt n pepper
     and poisson are the types of noises that are supported.'''
     
