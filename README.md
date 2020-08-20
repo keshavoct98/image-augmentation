@@ -28,7 +28,7 @@ img_new = scale(img, fx = 1.5, fy = 1.5, keep_resolution = False)
 img_new = shear(img, shear_val = 0.2, axis = 1)
 img_new = translate(img, tx = 50, ty = 60)
 ```
-<img src = 'https://github.com/keshavoct98/image-augmentation/blob/master/images/out_geometric0.jpg' width = 100%>
+![](https://github.com/keshavoct98/image-augmentation/blob/master/images/out_geometric0.jpg&s=100)
 
 ```python
 # Geometric Transformations with bounding box
@@ -40,7 +40,7 @@ img_new, bbox_new = scale(img, fx = 1.5, fy = 1.3, keep_resolution = False, box 
 img_new, bbox_new = shear(img, shear_val = 0.2, axis = 0, box = bbox)
 img_new, bbox_new = translate(img, tx = 50, ty = 160, box = bbox)
 ```
-<img src = 'https://github.com/keshavoct98/image-augmentation/blob/master/images/out_geometric1.jpg' width = 100%>
+![](https://github.com/keshavoct98/image-augmentation/blob/master/images/out_geometric1.jpg&s=100)
 
 ```python
 # Photometric Transformations
@@ -55,7 +55,7 @@ img_new = addNoise(img, 'gaussian', mean = 0, var = 0.08)
 img_new = addNoise(img, 'salt_pepper', sp_ratio = 0.5, noise_amount = 0.1)
 img_new = addNoise(img, 'poisson', noise_amount = 0.5)
 ```
-<img src = 'https://github.com/keshavoct98/image-augmentation/blob/master/images/out_photometric.jpg' width = 100%>
+![](https://github.com/keshavoct98/image-augmentation/blob/master/images/out_photometric.jpg)
 
 ```python
 # Kernel-based Transformations
@@ -70,7 +70,7 @@ img_new = blur(img, 'avg', ksize = (9,9))
 img_new = blur(img, 'gaussian', ksize = (9,9), gaussian_sigma = 0)
 img_new = blur(img, 'median', median_ksize = 11)
 ```
-<img src = 'https://github.com/keshavoct98/image-augmentation/blob/master/images/out_kernel_based.jpg' width = 100%>
+![](https://github.com/keshavoct98/image-augmentation/blob/master/images/out_kernel_based.jpg)
 
 ### References
 1. https://numpy.org/doc/
