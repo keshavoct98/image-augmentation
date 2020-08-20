@@ -254,3 +254,16 @@ Features
     img_new = blur(img, 'gaussian', ksize = (9,9), gaussian_sigma = 0)
     img_new = blur(img, 'median', median_ksize = 11)
 
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
