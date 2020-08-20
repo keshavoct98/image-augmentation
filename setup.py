@@ -1,13 +1,16 @@
 import setuptools
 
 
+with open("README.md", "r") as f:
+    long_description = f.read()
+
 setuptools.setup(
     name="augment_auto",
-    version="0.0.4",
+    version="0.0.6",
     author="keshav sharma",
     author_email="keshavoct98@gmail.com",
-    description="Image augmentation library",
-    long_description="An image augmentation library for object detection and image classification tasks.",
+    description="An image augmentation library for object detection and image classification tasks.",
+    long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/keshavoct98/image-augmentation",
     packages=['augment'],
