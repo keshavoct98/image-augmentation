@@ -40,19 +40,19 @@ def randomErase(img, size, box = None):
     assert (size[0] < img.shape[1] and size[1] < img.shape[0]), "Values inside 'size' must be smaller then image dimensions."
     
     img_new = img.copy()
-    pixels_mean = [int(img_new[:,:,0].mean()), int(img_new[:,:,1].mean()), int(img_new[:,:,2].mean())]
+    pixels_mean = int(img_new[:,:].mean())
     
     if box == None:
         x = random.randint(0, img.shape[1] - (size[0] + 1))
         y = random.randint(0, img.shape[0] - (size[1] + 1))
-        img_new[y : y + size[1], x : x + size[0], :] = pixels_mean
+        img_new[y : y + size[1], x : x + size[0]] = pixels_mean
         
     else:
         assert (size[0] + box[2]) < img.shape[1] and (size[1] + box[3]) < img.shape[0], "Values passed inside 'size' are too big for the image. Either reduce the values inside 'size' argument or try 'randomErase' without passing 'box' argument."
         
         x = random.randint(box[0], box[2])
         y = random.randint(box[1], box[3])
-        img_new[y : y + size[1], x : x + size[0], :] = pixels_mean
+        img_new[y : y + size[1], x : x + size[0]] = pixels_mean
     
     return img_new
 
@@ -73,8 +73,8 @@ def randomCropAdd(img, size, box = None):
         y_old = random.randint(0, img.shape[0] - (size[0] + 1))
         x_new = random.randint(0, img.shape[1] - (size[0] + 1))
         y_new = random.randint(0, img.shape[0] - (size[0] + 1))
-        img_new[y_old : y_old + size[1], x_old : x_old + size[0], :] = img_new[
-            y_new : y_new + size[1], x_new : x_new + size[0], :]
+        img_new[y_old : y_old + size[1], x_old : x_old + size[0]] = img_new[
+            y_new : y_new + size[1], x_new : x_new + size[0]]
         
     else:
         assert (size[0] + box[2]) < img.shape[1] and (size[1] + box[3]) < img.shape[0], "Values passed inside 'size' are too big for the image. Either reduce the values inside 'size' argument or try 'randomErase' without passing 'box' argument."
@@ -83,8 +83,8 @@ def randomCropAdd(img, size, box = None):
         y_old = random.randint(box[1], box[3])
         x_new = random.randint(box[0], box[2])
         y_new = random.randint(box[1], box[3])
-        img_new[y_old : y_old + size[1], x_old : x_old + size[0], :] = img_new[
-            y_new : y_new + size[1], x_new : x_new + size[0], :]
+        img_new[y_old : y_old + size[1], x_old : x_old + size[0]] = img_new[
+            y_new : y_new + size[1], x_new : x_new + size[0]]
     
     return img_new
 

@@ -61,19 +61,19 @@ def addNoise(img, noise_type = 'gaussian', mean = 0, var = 0.05, sp_ratio = 0.5,
     
     if noise_type == 'gaussian':
         sigma = var**0.5
-        gauss = np.random.normal(mean, sigma, (img_new.shape[0], img_new.shape[1], img_new.shape[2]))
+        gauss = np.random.normal(mean, sigma, (img_new.shape[:]))
         img_new = img_new + gauss
         
     elif noise_type == 'salt_pepper':
         # Salt mode
         num_salt = int(noise_amount * img_new.size * sp_ratio)
         coords = [np.random.randint(0, i - 1, num_salt) for i in img_new.shape[:2]]
-        img_new[coords[0], coords[1], :] = 1
+        img_new[coords[0], coords[1]] = 1
 
         # Pepper mode
         num_pepper = int(noise_amount * img_new.size * (1. - sp_ratio))
         coords = [np.random.randint(0, i - 1, num_pepper) for i in img_new.shape[:2]]
-        img_new[coords[0], coords[1], :] = 0
+        img_new[coords[0], coords[1]] = 0
         
     elif noise_type == 'poisson':
         img_new = img_new + (np.random.poisson(img_new * noise_amount) / float(noise_amount))
