@@ -35,48 +35,439 @@
 <h1>Welcome to augment-auto’s documentation!<a class="headerlink" href="#welcome-to-augment-auto-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="user-guide">
 <h2>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ol class="arabic simple">
 <li><dl class="simple">
-<dt>Installation</dt><dd><ol class="arabic simple">
+<dt>Installation</dt><dd><ul class="simple">
 <li><p>via pip</p></li>
 <li><p>via git</p></li>
-</ol>
+</ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>Features</dt><dd><ol class="arabic simple">
+<dt>Features</dt><dd><ul class="simple">
 <li><p>Photometric features</p></li>
 <li><p>Geometric features</p></li>
 <li><p>Kernel based features</p></li>
-</ol>
+</ul>
 </dd>
 </dl>
 </li>
-</ul>
+</ol>
 <div class="section" id="installation-guide">
 <h3>Installation guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p><strong>Install using pip</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">augment</span><span class="o">-</span><span class="n">auto</span>
+<ul class="simple">
+<li><p><strong>Install using pip</strong>:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">augment</span><span class="o">-</span><span class="n">auto</span>
 </pre></div>
 </div>
-</li>
-<li><p><strong>Install by building from scratch</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">keshavoct98</span><span class="o">/</span><span class="n">image</span><span class="o">-</span><span class="n">augmentation</span>
+<ul class="simple">
+<li><p><strong>Install by building from scratch</strong>:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">keshavoct98</span><span class="o">/</span><span class="n">image</span><span class="o">-</span><span class="n">augmentation</span>
 <span class="n">cd</span> <span class="n">image</span><span class="o">-</span><span class="n">augmentation</span>
 <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
-</li>
-</ul>
 </div>
 <div class="section" id="features">
 <h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><strong>Geometric Features</strong> - Image augmentation using geometric transformation of images.</p></li>
+<ol class="arabic">
+<li><p><strong>Geometric Features</strong> - Image augmentation with geometric transformation of images.</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>crop(img, point1, point2, box = None)</dt><dd><p>Returns cropped image.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be cropped.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>point1 = <em>tuple</em></dt><dd><p>initial crop coordinates in the format - (x1,y1).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>point2 = <em>tuple</em></dt><dd><p>final crop coordinates in the format - (x2,y2).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>box = <em>list</em>, default = None</dt><dd><p>Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>rotate(img, angle, keep_resolution = True, box = None)</dt><dd><p>Returns image rotated at the given angle.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be rotated.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>angle = <em>integer or float</em></dt><dd><p>value of angle at which image is to be rotated.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>keep_resolution = <em>bool</em>, default = True</dt><dd><p>If True, resolution of image remains same after rotation, else resolution is modified.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>box = <em>list</em></dt><dd><p>Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>scale(img, fx, fy, keep_resolution = False, box = None)</dt><dd><p>Returns scaled image.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be rotated.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>fx = <em>integer or float</em></dt><dd><p>scaling value for x-axis.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>fy = <em>integer or float</em></dt><dd><p>scaling value for y-axis.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>keep_resolution = <em>bool</em>, default = False</dt><dd><p>If True, resolution of image remains same after scaling, extra region is cropped.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>box = <em>list</em></dt><dd><p>Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>shear(img, shear_val, axis = 0, box = None)</dt><dd><p>Returns sheared image along given axis.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be sheared.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>shear_val = <em>integer or float</em></dt><dd><p>shearing value for given axis.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>axis = <em>{0,1}</em>, default = 0</dt><dd><p>0 for shear along x-axis, 1 for shear along y-axis.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>box = <em>list</em></dt><dd><p>Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>translate(img, tx, ty, box = None)</dt><dd><p>Returns translated image.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be sheared.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>tx = <em>integer or float</em></dt><dd><p>translation magnitude along x-axis.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ty = <em>integer or float</em></dt><dd><p>translation magnitude along y-axis.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>box = <em>list</em></dt><dd><p>Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">augment.geometric</span>
+</div></blockquote>
+</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Geometric Transformations</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;images/3.jpg&#39;</span><span class="p">)</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">crop</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">point1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">point2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">450</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">rotate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">angle</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">keep_resolution</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">fx</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">fy</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">keep_resolution</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">shear</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shear_val</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">tx</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">ty</span> <span class="o">=</span> <span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Geometric Transformations with bounding box</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;images/0.jpeg&#39;</span><span class="p">)</span>
+<span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="mi">581</span><span class="p">,</span> <span class="mi">274</span><span class="p">,</span> <span class="mi">699</span><span class="p">,</span> <span class="mi">321</span><span class="p">]</span>
+
+<span class="n">img_new</span><span class="p">,</span> <span class="n">bbox_new</span> <span class="o">=</span> <span class="n">crop</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">point1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">point2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">650</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">box</span> <span class="o">=</span> <span class="n">bbox</span><span class="p">)</span>
+
+<span class="n">img_new</span><span class="p">,</span> <span class="n">bbox_new</span> <span class="o">=</span> <span class="n">rotate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">angle</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">keep_resolution</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">box</span> <span class="o">=</span> <span class="n">bbox</span><span class="p">)</span>
+
+<span class="n">img_new</span><span class="p">,</span> <span class="n">bbox_new</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">fx</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">fy</span> <span class="o">=</span> <span class="mf">1.3</span><span class="p">,</span> <span class="n">keep_resolution</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">box</span> <span class="o">=</span> <span class="n">bbox</span><span class="p">)</span>
+
+<span class="n">img_new</span><span class="p">,</span> <span class="n">bbox_new</span> <span class="o">=</span> <span class="n">shear</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shear_val</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">box</span> <span class="o">=</span> <span class="n">bbox</span><span class="p">)</span>
+
+<span class="n">img_new</span><span class="p">,</span> <span class="n">bbox_new</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">tx</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">ty</span> <span class="o">=</span> <span class="mi">160</span><span class="p">,</span> <span class="n">box</span> <span class="o">=</span> <span class="n">bbox</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic">
+<li><p><strong>Photometric Features</strong> - Image augmentation with photometric transformation of images.</p>
+<blockquote>
+<div><ul>
+<li><dl>
+<dt>brightness_contrast(img, alpha = 1.5, beta = 0)</dt><dd><p>Returns image with new pixel intensities.</p>
+<p><em>img_new = img * alpha + beta</em></p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image whose brightness and contrast has to be modified.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>alpha = <em>integer or float</em>, default = 1.5</dt><dd><p>All pixel values of the passed image are multiplied by this value.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>beta = <em>integer or float</em>, default = 0</dt><dd><p>Vaue of beta is added to all pixel values of the passed image.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>colorSpace(img, colorspace = ‘hsv’)</dt><dd><p>Returns image with in the new colorspace. Three types of colorspace are supported - HSV, YCrCb, LAB.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image whose colorspace has to be converted.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>colorspace = <em>{‘hsv’, ‘ycrcb’, ‘lab’}</em>, default = ‘hsv’</dt><dd><p>Colorspace to which image is to be converted.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>addNoise(img, noise_type = ‘gaussian’, mean = 0, var = 0.05, sp_ratio = 0.5, noise_amount = 0.02)</dt><dd><p>Returns image with added noise. Three different types of noise are supported - GAUSSIAN, Salt n Pepper, Poisson.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to which noise has to be added.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>noise_type = <em>{‘gaussian’, ‘salt_pepper’, ‘poisson’}</em>, default = ‘gaussian</dt><dd><p>Type of noise to add.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>mean = <em>int or float, (required only with noise_type = ‘gaussian’).</em>, default = 0</dt><dd><p>Gaussian noise is generated using this mean.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>var = <em>int or float, (required only with noise_type = ‘gaussian’).</em>, default = 0.05</dt><dd><p>Gaussian noise is generated from the standard deviation calculated using this variance.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>sp_ratio = <em>int or float, (required only with noise_type = ‘salt_pepper’).</em>, default = 0.5</dt><dd><p>Percentage of salt noise and pepper noise.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>noise_amount = <em>int or float, (required only with noise_type = ‘salt_pepper’ or ‘poisson’).</em>, default = 0.02</dt><dd><p>magnitude of salt n pepper/poisson noise is calculated using noise_amount.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Photometric Transformations</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;images/1.jpg&#39;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">brightness_contrast</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.3</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">brightness_contrast</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">colorSpace</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">colorspace</span> <span class="o">=</span> <span class="s1">&#39;hsv&#39;</span><span class="p">)</span>
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">colorSpace</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">colorspace</span> <span class="o">=</span> <span class="s1">&#39;ycrcb&#39;</span><span class="p">)</span>
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">colorSpace</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">colorspace</span> <span class="o">=</span> <span class="s1">&#39;lab&#39;</span><span class="p">)</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">addNoise</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="mf">0.08</span><span class="p">)</span>
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">addNoise</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s1">&#39;salt_pepper&#39;</span><span class="p">,</span> <span class="n">sp_ratio</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">noise_amount</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">addNoise</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s1">&#39;poisson&#39;</span><span class="p">,</span> <span class="n">noise_amount</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic">
+<li><p>Kernel-based features</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>blur(img, blur_type = ‘avg’, ksize = (5, 5), median_ksize = 5, gaussian_sigma = 0)</dt><dd><p>Returns blurred image. Three different types of blurring are supported - GAUSSIAN, Salt n Pepper, Poisson.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be blurred.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>blur_type = <em>{‘avg’, ‘gaussian’, ‘median’}</em>, default = ‘avg’</dt><dd><p>Type of blurring to perform.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ksize = <em>tuple, (required only with blur_type = ‘avg’ or ‘gaussian’).</em>, default = (5, 5)</dt><dd><p>kernel size used for average or gaussian blurring.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>median_ksize = <em>int, (required only with blur_type = ‘median’).</em>, default = 5</dt><dd><p>kernel size used for median blurring.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>gaussian_sigma = <em>int or float, (required only with blur_type = ‘gaussian’).</em>, default = 0</dt><dd><p>Standard deviation used to calculate gaussian kernel.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>randomErase(img, size, box = None)</dt><dd><p>A random rectangular region is replaced by mean value of image pixels. Returns modified image.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be modified.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>size = <em>tuple</em></dt><dd><p>Size of rectangular region to erase.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>box = <em>list</em></dt><dd><p>Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, rectangular region is erased from the bounding box region.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>randomCropAdd(img, size, box = None)</dt><dd><p>A random rectangular region is cropped and added to another region of image. Returns modified image.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be modified.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>size = <em>tuple</em></dt><dd><p>Size of rectangular region to crop and add.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>box = <em>list</em></dt><dd><p>Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, rectangular region is cropped from and added to the bounding box region.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>sharpen(img)</dt><dd><p>Returns sharpened image.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be sharpened.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kernel-based Transformations</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;images/0.jpeg&#39;</span><span class="p">)</span>
+<span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="mi">581</span><span class="p">,</span> <span class="mi">274</span><span class="p">,</span> <span class="mi">699</span><span class="p">,</span> <span class="mi">321</span><span class="p">]</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">randomErase</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">randomCropAdd</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">sharpen</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">randomErase</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">box</span> <span class="o">=</span> <span class="n">bbox</span><span class="p">)</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">randomCropAdd</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">box</span> <span class="o">=</span> <span class="n">bbox</span><span class="p">)</span>
+
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">blur</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s1">&#39;avg&#39;</span><span class="p">,</span> <span class="n">ksize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">blur</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="n">ksize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="n">gaussian_sigma</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">img_new</span> <span class="o">=</span> <span class="n">blur</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">median_ksize</span> <span class="o">=</span> <span class="mi">11</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
