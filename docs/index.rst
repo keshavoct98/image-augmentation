@@ -40,14 +40,14 @@ Features
 #. **Geometric Features** - Image augmentation with geometric transformation of images.
 
     * crop(img, point1, point2, box = None)
-        Returns cropped image.
+        Returns cropped image. Image is cropped using point1(x1, y1) and point2(x2, y2).
 
         #. img = *numpy.ndarray*
                     Image to be cropped.
-        #. point1 = *tuple*
-                    initial crop coordinates in the format - (x1,y1).
-        #. point2 = *tuple*
-                    final crop coordinates in the format - (x2,y2).
+        #. point1 = *tuple of int*
+                    initial crop coordinates in the format - (x1, y1).
+        #. point2 = *tuple of int*
+                    final crop coordinates in the format - (x2, y2).
         #. box = *list*, default = None
                     Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.
 
@@ -59,7 +59,7 @@ Features
         #. angle = *integer or float*
                     value of angle at which image is to be rotated.
         #. keep_resolution = *bool*, default = True
-                    If True, resolution of image remains same after rotation, else resolution is modified.
+                    If True, resolution of image remains same after rotation, else resolution is changed.
         #. box = *list*
                     Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.
 
@@ -67,13 +67,13 @@ Features
         Returns scaled image.
 
         #. img = *numpy.ndarray*
-                    Image to be rotated.
+                    Image to be scaled.
         #. fx = *integer or float*
                     scaling value for x-axis.
         #. fy = *integer or float*
                     scaling value for y-axis.
         #. keep_resolution = *bool*, default = False
-                    If True, resolution of image remains same after scaling, extra region is cropped.
+                    If True, resolution of image remains same after scaling, extra region is cropped out.
         #. box = *list*
                     Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.
 
@@ -83,7 +83,7 @@ Features
         #. img = *numpy.ndarray*
                     Image to be sheared.
         #. shear_val = *integer or float*
-                    shearing value for given axis.
+                    shearing magnitude for given axis.
         #. axis = *{0,1}*, default = 0
                     0 for shear along x-axis, 1 for shear along y-axis.
         #. box = *list*
@@ -93,7 +93,7 @@ Features
         Returns translated image.
 
         #. img = *numpy.ndarray*
-                    Image to be sheared.
+                    Image to be translated.
         #. tx = *integer or float*
                     translation magnitude along x-axis.
         #. ty = *integer or float*
@@ -148,13 +148,13 @@ Features
 
         #. img = *numpy.ndarray*
                     Image whose brightness and contrast has to be modified.
-        #. alpha = *integer or float*, default = 1.5
-                    All pixel values of the passed image are multiplied by this value.
+        #. alpha = *integer or float, non-negative*, default = 1.5
+                    All pixel values of the passed image are multiplied by value of alpha.
         #. beta = *integer or float*, default = 0
-                    Vaue of beta is added to all pixel values of the passed image.
+                    Vaue of beta is added to all pixel values of the passed image after multiplication of pixel values with value of alpha.
 
     * colorSpace(img, colorspace = 'hsv')
-        Returns image with in the new colorspace. Three types of colorspace are supported - HSV, YCrCb, LAB.
+        Returns image converted to the new colorspace. Three types of colorspace are supported - HSV, YCrCb, LAB.
         
         #. img = *numpy.ndarray*
                     Image whose colorspace has to be converted.
@@ -169,12 +169,12 @@ Features
         #. noise_type = *{'gaussian', 'salt_pepper', 'poisson'}*, default = 'gaussian
                     Type of noise to add.
         #. mean = *int or float, (required only with noise_type = 'gaussian').*, default = 0
-                    Gaussian noise is generated using this mean.
-        #. var = *int or float, (required only with noise_type = 'gaussian').*, default = 0.05
-                    Gaussian noise is generated from the standard deviation calculated using this variance.
-        #. sp_ratio = *int or float, (required only with noise_type = 'salt_pepper').*, default = 0.5
-                    Percentage of salt noise and pepper noise.
-        #. noise_amount = *int or float, (required only with noise_type = 'salt_pepper' or 'poisson').*, default = 0.02
+                    Gaussian noise is generated using mean value.
+        #. var = *int or float, non-negative, (required only with noise_type = 'gaussian').*, default = 0.05
+                    Gaussian noise is generated from the standard deviation calculated value of variance provided.
+        #. sp_ratio = *int or float, range :- 0 <= sp_ratio <= 1, (required only with noise_type = 'salt_pepper').*, default = 0.5
+                    Percentage of salt noise and pepper noise. if value passed is equal to 1, only salt noise is present. Similarly if value is 0, only pepper noise is present.
+        #. noise_amount = *int or float, non-negative, (required only with noise_type = 'salt_pepper' or 'poisson').*, default = 0.02
                     magnitude of salt n pepper/poisson noise is calculated using noise_amount.
 
 .. code-block:: python
@@ -206,30 +206,30 @@ Features
                     Image to be blurred.
         #. blur_type = *{'avg', 'gaussian', 'median'}*, default = 'avg'
                     Type of blurring to perform.
-        #. ksize = *tuple, (required only with blur_type = 'avg' or 'gaussian').*, default = (5, 5)
+        #. ksize = *tuple of odd positive integers, (required only with blur_type = 'avg' or 'gaussian').*, default = (5, 5)
                     kernel size used for average or gaussian blurring.
-        #. median_ksize = *int, (required only with blur_type = 'median').*, default = 5
+        #. median_ksize = *int, odd positive integer, (required only with blur_type = 'median').*, default = 5
                     kernel size used for median blurring.
         #. gaussian_sigma = *int or float, (required only with blur_type = 'gaussian').*, default = 0
                     Standard deviation used to calculate gaussian kernel.
 
     * randomErase(img, size, box = None)
-        A random rectangular region is replaced by mean value of image pixels. Returns modified image.
+        A random rectangular region is erased and replaced by mean value of image pixels. Returns modified image.
 
         #. img = *numpy.ndarray*
                     Image to be modified.
-        #. size = *tuple*
+        #. size = *tuple of int*
                     Size of rectangular region to erase.
         #. box = *list*
                     Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, rectangular region is erased from the bounding box region.
 
     * randomCropAdd(img, size, box = None)
-        A random rectangular region is cropped and added to another region of image. Returns modified image.
+        A random rectangular region is erased and added to another region of image. Returns modified image.
 
         #. img = *numpy.ndarray*
                     Image to be modified.
-        #. size = *tuple*
-                    Size of rectangular region to crop and add.
+        #. size = *tuple of int*
+                    Size of rectangular region to erase and add.
         #. box = *list*
                     Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, rectangular region is cropped from and added to the bounding box region.
 
