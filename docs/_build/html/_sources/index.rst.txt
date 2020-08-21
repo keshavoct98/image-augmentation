@@ -117,6 +117,8 @@ Features
     
     img_new = translate(img, tx = 50, ty = 60)
 
+.. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_geometric0.jpg
+
 .. code-block:: python
 
     # Geometric Transformations with bounding box
@@ -133,6 +135,8 @@ Features
     img_new, bbox_new = shear(img, shear_val = 0.2, axis = 0, box = bbox)
     
     img_new, bbox_new = translate(img, tx = 50, ty = 160, box = bbox)
+
+.. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_geometric1.jpg
 
 
 #. **Photometric Features** - Image augmentation with photometric transformation of images.
@@ -190,6 +194,8 @@ Features
     img_new = addNoise(img, 'gaussian', mean = 0, var = 0.08)
     img_new = addNoise(img, 'salt_pepper', sp_ratio = 0.5, noise_amount = 0.1)
     img_new = addNoise(img, 'poisson', noise_amount = 0.5)
+
+.. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_photometric.jpg
 
 #. Kernel-based features
 
@@ -254,3 +260,8 @@ Features
     img_new = blur(img, 'gaussian', ksize = (9,9), gaussian_sigma = 0)
     img_new = blur(img, 'median', median_ksize = 11)
 
+.. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_kernel_based.jpg
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
