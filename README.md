@@ -23,7 +23,7 @@ python setup.py install
 ```
 
 ### Documentation
-Complete documentaion - [https://augment-auto.readthedocs.io/en/latest/](https://augment-auto.readthedocs.io) </br>
+Complete documentaion - [https://augment-auto.readthedocs.io/](https://augment-auto.readthedocs.io/en/latest/) </br>
 Demo ipython notebokk - [demo.ipynb](https://github.com/keshavoct98/image-augmentation/blob/master/demo.ipynb)
 
 ### Examples
