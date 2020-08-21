@@ -1,20 +1,14 @@
 Welcome to augment-auto's documentation!
 ========================================
 
-**********
-User Guide
-**********
 
-#. Installation
-    * via pip
-    * via git
-#. Features
-    * Photometric features
-    * Geometric features
-    * Kernel based features
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
+    Installation guide
+    Features
 
-##################
 Installation guide
 ##################
 
@@ -33,11 +27,10 @@ Installation guide
     python setup.py install
 
 
-########
 Features
 ########
 
-#. **Geometric Features** - Image augmentation with geometric transformation of images.
+1. **Geometric Features** - Image augmentation with geometric transformation of images.
 
     * crop(img, point1, point2, box = None)
         Returns cropped image. Image is cropped using point1(x1, y1) and point2(x2, y2).
@@ -101,41 +94,45 @@ Features
         #. box = *list*
                     Coordinates of bounding box in the format - (x1,y1,x2,y2). If bounding box coordinates are passed, new coordinates are calculated and returned along with output image.
 
-.. code-block:: python
+    .. code-block:: python
+    
+        # Geometric Transformations
+        
+        img = cv2.imread('images/3.jpg')
+          
+        img_new = crop(img, point1 = (100, 100), point2 = (450, 400))
+        
+        img_new = rotate(img, angle = 15, keep_resolution = True)
+        
+        img_new = scale(img, fx = 1.5, fy = 1.5, keep_resolution = False)
+        
+        img_new = shear(img, shear_val = 0.2, axis = 1)
+        
+        img_new = translate(img, tx = 50, ty = 60)
 
-    # Geometric Transformations
+    .. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_geometric0.jpg
     
-    img = cv2.imread('images/3.jpg')
-      
-    img_new = crop(img, point1 = (100, 100), point2 = (450, 400))
+    .. code-block:: python
     
-    img_new = rotate(img, angle = 15, keep_resolution = True)
+        # Geometric Transformations with bounding box
+        
+        img = cv2.imread('images/0.jpeg')
+        bbox = [581, 274, 699, 321]
+        
+        img_new, bbox_new = crop(img, point1 = (100, 100), point2 = (650, 400), box = bbox)
+        
+        img_new, bbox_new = rotate(img, angle = 15, keep_resolution = True, box = bbox)
+        
+        img_new, bbox_new = scale(img, fx = 1.5, fy = 1.3, keep_resolution = False, box = bbox)
+        
+        img_new, bbox_new = shear(img, shear_val = 0.2, axis = 0, box = bbox)
+        
+        img_new, bbox_new = translate(img, tx = 50, ty = 160, box = bbox)
     
-    img_new = scale(img, fx = 1.5, fy = 1.5, keep_resolution = False)
-    
-    img_new = shear(img, shear_val = 0.2, axis = 1)
-    
-    img_new = translate(img, tx = 50, ty = 60)
-
-.. code-block:: python
-
-    # Geometric Transformations with bounding box
-    
-    img = cv2.imread('images/0.jpeg')
-    bbox = [581, 274, 699, 321]
-    
-    img_new, bbox_new = crop(img, point1 = (100, 100), point2 = (650, 400), box = bbox)
-    
-    img_new, bbox_new = rotate(img, angle = 15, keep_resolution = True, box = bbox)
-    
-    img_new, bbox_new = scale(img, fx = 1.5, fy = 1.3, keep_resolution = False, box = bbox)
-    
-    img_new, bbox_new = shear(img, shear_val = 0.2, axis = 0, box = bbox)
-    
-    img_new, bbox_new = translate(img, tx = 50, ty = 160, box = bbox)
+    .. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_geometric1.jpg
 
 
-#. **Photometric Features** - Image augmentation with photometric transformation of images.
+2. **Photometric Features** - Image augmentation with photometric transformation of images.
 
     * brightness_contrast(img, alpha = 1.5, beta = 0)
         Returns image with new pixel intensities.
@@ -173,25 +170,27 @@ Features
         #. noise_amount = *int or float, non-negative, (required only with noise_type = 'salt_pepper' or 'poisson').*, default = 0.02
                     magnitude of salt n pepper/poisson noise is calculated using noise_amount.
 
-.. code-block:: python
+    .. code-block:: python
+    
+        # Photometric Transformations
+        
+        img = cv2.imread('images/1.jpg')
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        
+        img_new = brightness_contrast(img, alpha = 1.3, beta = 20)            
+        img_new = brightness_contrast(img, alpha = 0.7, beta = -10)
+        
+        img_new = colorSpace(img, colorspace = 'hsv')             
+        img_new = colorSpace(img, colorspace = 'ycrcb')           
+        img_new = colorSpace(img, colorspace = 'lab')
+        
+        img_new = addNoise(img, 'gaussian', mean = 0, var = 0.08)
+        img_new = addNoise(img, 'salt_pepper', sp_ratio = 0.5, noise_amount = 0.1)
+        img_new = addNoise(img, 'poisson', noise_amount = 0.5)
+    
+    .. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_photometric.jpg
 
-    # Photometric Transformations
-    
-    img = cv2.imread('images/1.jpg')
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    
-    img_new = brightness_contrast(img, alpha = 1.3, beta = 20)            
-    img_new = brightness_contrast(img, alpha = 0.7, beta = -10)
-    
-    img_new = colorSpace(img, colorspace = 'hsv')             
-    img_new = colorSpace(img, colorspace = 'ycrcb')           
-    img_new = colorSpace(img, colorspace = 'lab')
-    
-    img_new = addNoise(img, 'gaussian', mean = 0, var = 0.08)
-    img_new = addNoise(img, 'salt_pepper', sp_ratio = 0.5, noise_amount = 0.1)
-    img_new = addNoise(img, 'poisson', noise_amount = 0.5)
-
-#. Kernel-based features
+3. **Kernel-based features**
 
     * blur(img, blur_type = 'avg', ksize = (5, 5), median_ksize = 5, gaussian_sigma = 0)
         Returns blurred image. Three different types of blurring are supported - GAUSSIAN, Salt n Pepper, Poisson.
@@ -233,37 +232,25 @@ Features
         #. img = *numpy.ndarray*
                     Image to be sharpened.
 
-.. code-block:: python
-
-    # Kernel-based Transformations
+    .. code-block:: python
     
-    img = cv2.imread('images/0.jpeg')
-    bbox = [581, 274, 699, 321]
+        # Kernel-based Transformations
+        
+        img = cv2.imread('images/0.jpeg')
+        bbox = [581, 274, 699, 321]
+        
+        img_new = randomErase(img, size = (100, 100))
+        
+        img_new = randomCropAdd(img, size = (100, 100))
+        
+        img_new = sharpen(img)
+        
+        img_new = randomErase(img, size = (60, 40), box = bbox)
+        
+        img_new = randomCropAdd(img, size = (60, 40), box = bbox)
+        
+        img_new = blur(img, 'avg', ksize = (9,9))
+        img_new = blur(img, 'gaussian', ksize = (9,9), gaussian_sigma = 0)
+        img_new = blur(img, 'median', median_ksize = 11)
     
-    img_new = randomErase(img, size = (100, 100))
-    
-    img_new = randomCropAdd(img, size = (100, 100))
-    
-    img_new = sharpen(img)
-    
-    img_new = randomErase(img, size = (60, 40), box = bbox)
-    
-    img_new = randomCropAdd(img, size = (60, 40), box = bbox)
-    
-    img_new = blur(img, 'avg', ksize = (9,9))
-    img_new = blur(img, 'gaussian', ksize = (9,9), gaussian_sigma = 0)
-    img_new = blur(img, 'median', median_ksize = 11)
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+    .. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_kernel_based.jpg

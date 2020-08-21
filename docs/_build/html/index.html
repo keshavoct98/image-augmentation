@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to augment-auto’s documentation! &#8212; augment-auto 0.0.1 documentation</title>
+    <title>Welcome to augment-auto’s documentation! &#8212; augment-auto 0.0.8 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -33,29 +33,8 @@
             
   <div class="section" id="welcome-to-augment-auto-s-documentation">
 <h1>Welcome to augment-auto’s documentation!<a class="headerlink" href="#welcome-to-augment-auto-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="user-guide">
-<h2>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><dl class="simple">
-<dt>Installation</dt><dd><ul class="simple">
-<li><p>via pip</p></li>
-<li><p>via git</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Features</dt><dd><ul class="simple">
-<li><p>Photometric features</p></li>
-<li><p>Geometric features</p></li>
-<li><p>Kernel based features</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ol>
 <div class="section" id="installation-guide">
-<h3>Installation guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h3>
+<h2>Installation guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>Install using pip</strong>:</p></li>
 </ul>
@@ -72,13 +51,13 @@
 </div>
 </div>
 <div class="section" id="features">
-<h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p><strong>Geometric Features</strong> - Image augmentation with geometric transformation of images.</p>
 <blockquote>
 <div><ul class="simple">
 <li><dl class="simple">
-<dt>crop(img, point1, point2, box = None)</dt><dd><p>Returns cropped image.</p>
+<dt>crop(img, point1, point2, box = None)</dt><dd><p>Returns cropped image. Image is cropped using point1(x1, y1) and point2(x2, y2).</p>
 <ol class="arabic simple">
 <li><dl class="simple">
 <dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be cropped.</p>
@@ -86,12 +65,12 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>point1 = <em>tuple</em></dt><dd><p>initial crop coordinates in the format - (x1,y1).</p>
+<dt>point1 = <em>tuple of int</em></dt><dd><p>initial crop coordinates in the format - (x1, y1).</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>point2 = <em>tuple</em></dt><dd><p>final crop coordinates in the format - (x2,y2).</p>
+<dt>point2 = <em>tuple of int</em></dt><dd><p>final crop coordinates in the format - (x2, y2).</p>
 </dd>
 </dl>
 </li>
@@ -118,7 +97,7 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>keep_resolution = <em>bool</em>, default = True</dt><dd><p>If True, resolution of image remains same after rotation, else resolution is modified.</p>
+<dt>keep_resolution = <em>bool</em>, default = True</dt><dd><p>If True, resolution of image remains same after rotation, else resolution is changed.</p>
 </dd>
 </dl>
 </li>
@@ -135,7 +114,7 @@
 <dt>scale(img, fx, fy, keep_resolution = False, box = None)</dt><dd><p>Returns scaled image.</p>
 <ol class="arabic simple">
 <li><dl class="simple">
-<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be rotated.</p>
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be scaled.</p>
 </dd>
 </dl>
 </li>
@@ -150,7 +129,7 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>keep_resolution = <em>bool</em>, default = False</dt><dd><p>If True, resolution of image remains same after scaling, extra region is cropped.</p>
+<dt>keep_resolution = <em>bool</em>, default = False</dt><dd><p>If True, resolution of image remains same after scaling, extra region is cropped out.</p>
 </dd>
 </dl>
 </li>
@@ -172,7 +151,7 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>shear_val = <em>integer or float</em></dt><dd><p>shearing value for given axis.</p>
+<dt>shear_val = <em>integer or float</em></dt><dd><p>shearing magnitude for given axis.</p>
 </dd>
 </dl>
 </li>
@@ -194,7 +173,7 @@
 <dt>translate(img, tx, ty, box = None)</dt><dd><p>Returns translated image.</p>
 <ol class="arabic simple">
 <li><dl class="simple">
-<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be sheared.</p>
+<dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be translated.</p>
 </dd>
 </dl>
 </li>
@@ -218,9 +197,6 @@
 </dl>
 </li>
 </ul>
-</div></blockquote>
-</li>
-</ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Geometric Transformations</span>
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;images/3.jpg&#39;</span><span class="p">)</span>
@@ -236,6 +212,7 @@
 <span class="n">img_new</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">tx</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">ty</span> <span class="o">=</span> <span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
+<img alt="https://github.com/keshavoct98/image-augmentation/raw/master/images/out_geometric0.jpg" src="https://github.com/keshavoct98/image-augmentation/raw/master/images/out_geometric0.jpg" />
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Geometric Transformations with bounding box</span>
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;images/0.jpeg&#39;</span><span class="p">)</span>
@@ -252,7 +229,9 @@
 <span class="n">img_new</span><span class="p">,</span> <span class="n">bbox_new</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">tx</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">ty</span> <span class="o">=</span> <span class="mi">160</span><span class="p">,</span> <span class="n">box</span> <span class="o">=</span> <span class="n">bbox</span><span class="p">)</span>
 </pre></div>
 </div>
-<ol class="arabic">
+<img alt="https://github.com/keshavoct98/image-augmentation/raw/master/images/out_geometric1.jpg" src="https://github.com/keshavoct98/image-augmentation/raw/master/images/out_geometric1.jpg" />
+</div></blockquote>
+</li>
 <li><p><strong>Photometric Features</strong> - Image augmentation with photometric transformation of images.</p>
 <blockquote>
 <div><ul>
@@ -266,12 +245,12 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>alpha = <em>integer or float</em>, default = 1.5</dt><dd><p>All pixel values of the passed image are multiplied by this value.</p>
+<dt>alpha = <em>integer or float, non-negative</em>, default = 1.5</dt><dd><p>All pixel values of the passed image are multiplied by value of alpha.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>beta = <em>integer or float</em>, default = 0</dt><dd><p>Vaue of beta is added to all pixel values of the passed image.</p>
+<dt>beta = <em>integer or float</em>, default = 0</dt><dd><p>Vaue of beta is added to all pixel values of the passed image after multiplication of pixel values with value of alpha.</p>
 </dd>
 </dl>
 </li>
@@ -280,7 +259,7 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>colorSpace(img, colorspace = ‘hsv’)</dt><dd><p>Returns image with in the new colorspace. Three types of colorspace are supported - HSV, YCrCb, LAB.</p>
+<dt>colorSpace(img, colorspace = ‘hsv’)</dt><dd><p>Returns image converted to the new colorspace. Three types of colorspace are supported - HSV, YCrCb, LAB.</p>
 <ol class="arabic simple">
 <li><dl class="simple">
 <dt>img = <em>numpy.ndarray</em></dt><dd><p>Image whose colorspace has to be converted.</p>
@@ -310,22 +289,22 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>mean = <em>int or float, (required only with noise_type = ‘gaussian’).</em>, default = 0</dt><dd><p>Gaussian noise is generated using this mean.</p>
+<dt>mean = <em>int or float, (required only with noise_type = ‘gaussian’).</em>, default = 0</dt><dd><p>Gaussian noise is generated using mean value.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>var = <em>int or float, (required only with noise_type = ‘gaussian’).</em>, default = 0.05</dt><dd><p>Gaussian noise is generated from the standard deviation calculated using this variance.</p>
+<dt>var = <em>int or float, non-negative, (required only with noise_type = ‘gaussian’).</em>, default = 0.05</dt><dd><p>Gaussian noise is generated from the standard deviation calculated value of variance provided.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>sp_ratio = <em>int or float, (required only with noise_type = ‘salt_pepper’).</em>, default = 0.5</dt><dd><p>Percentage of salt noise and pepper noise.</p>
+<dt>sp_ratio = <em>int or float, range :- 0 &lt;= sp_ratio &lt;= 1, (required only with noise_type = ‘salt_pepper’).</em>, default = 0.5</dt><dd><p>Percentage of salt noise and pepper noise. if value passed is equal to 1, only salt noise is present. Similarly if value is 0, only pepper noise is present.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>noise_amount = <em>int or float, (required only with noise_type = ‘salt_pepper’ or ‘poisson’).</em>, default = 0.02</dt><dd><p>magnitude of salt n pepper/poisson noise is calculated using noise_amount.</p>
+<dt>noise_amount = <em>int or float, non-negative, (required only with noise_type = ‘salt_pepper’ or ‘poisson’).</em>, default = 0.02</dt><dd><p>magnitude of salt n pepper/poisson noise is calculated using noise_amount.</p>
 </dd>
 </dl>
 </li>
@@ -334,9 +313,6 @@
 </dl>
 </li>
 </ul>
-</div></blockquote>
-</li>
-</ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Photometric Transformations</span>
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;images/1.jpg&#39;</span><span class="p">)</span>
@@ -354,8 +330,10 @@
 <span class="n">img_new</span> <span class="o">=</span> <span class="n">addNoise</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s1">&#39;poisson&#39;</span><span class="p">,</span> <span class="n">noise_amount</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
-<ol class="arabic">
-<li><p>Kernel-based features</p>
+<img alt="https://github.com/keshavoct98/image-augmentation/raw/master/images/out_photometric.jpg" src="https://github.com/keshavoct98/image-augmentation/raw/master/images/out_photometric.jpg" />
+</div></blockquote>
+</li>
+<li><p><strong>Kernel-based features</strong></p>
 <blockquote>
 <div><ul class="simple">
 <li><dl class="simple">
@@ -372,12 +350,12 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>ksize = <em>tuple, (required only with blur_type = ‘avg’ or ‘gaussian’).</em>, default = (5, 5)</dt><dd><p>kernel size used for average or gaussian blurring.</p>
+<dt>ksize = <em>tuple of odd positive integers, (required only with blur_type = ‘avg’ or ‘gaussian’).</em>, default = (5, 5)</dt><dd><p>kernel size used for average or gaussian blurring.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>median_ksize = <em>int, (required only with blur_type = ‘median’).</em>, default = 5</dt><dd><p>kernel size used for median blurring.</p>
+<dt>median_ksize = <em>int, odd positive integer, (required only with blur_type = ‘median’).</em>, default = 5</dt><dd><p>kernel size used for median blurring.</p>
 </dd>
 </dl>
 </li>
@@ -391,7 +369,7 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>randomErase(img, size, box = None)</dt><dd><p>A random rectangular region is replaced by mean value of image pixels. Returns modified image.</p>
+<dt>randomErase(img, size, box = None)</dt><dd><p>A random rectangular region is erased and replaced by mean value of image pixels. Returns modified image.</p>
 <ol class="arabic simple">
 <li><dl class="simple">
 <dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be modified.</p>
@@ -399,7 +377,7 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>size = <em>tuple</em></dt><dd><p>Size of rectangular region to erase.</p>
+<dt>size = <em>tuple of int</em></dt><dd><p>Size of rectangular region to erase.</p>
 </dd>
 </dl>
 </li>
@@ -413,7 +391,7 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>randomCropAdd(img, size, box = None)</dt><dd><p>A random rectangular region is cropped and added to another region of image. Returns modified image.</p>
+<dt>randomCropAdd(img, size, box = None)</dt><dd><p>A random rectangular region is erased and added to another region of image. Returns modified image.</p>
 <ol class="arabic simple">
 <li><dl class="simple">
 <dt>img = <em>numpy.ndarray</em></dt><dd><p>Image to be modified.</p>
@@ -421,7 +399,7 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>size = <em>tuple</em></dt><dd><p>Size of rectangular region to crop and add.</p>
+<dt>size = <em>tuple of int</em></dt><dd><p>Size of rectangular region to erase and add.</p>
 </dd>
 </dl>
 </li>
@@ -447,9 +425,6 @@
 </dl>
 </li>
 </ul>
-</div></blockquote>
-</li>
-</ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kernel-based Transformations</span>
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;images/0.jpeg&#39;</span><span class="p">)</span>
@@ -470,6 +445,11 @@
 <span class="n">img_new</span> <span class="o">=</span> <span class="n">blur</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">median_ksize</span> <span class="o">=</span> <span class="mi">11</span><span class="p">)</span>
 </pre></div>
 </div>
+<img alt="https://github.com/keshavoct98/image-augmentation/raw/master/images/out_kernel_based.jpg" src="https://github.com/keshavoct98/image-augmentation/raw/master/images/out_kernel_based.jpg" />
+</div></blockquote>
+</li>
+</ol>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 </div>
