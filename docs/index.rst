@@ -2,6 +2,13 @@ Welcome to augment-auto's documentation!
 ========================================
 
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+    Installation guide
+    Features
+
 Installation guide
 ##################
 
@@ -247,7 +254,3 @@ Features
         img_new = blur(img, 'median', median_ksize = 11)
     
     .. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_kernel_based.jpg
-    
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
