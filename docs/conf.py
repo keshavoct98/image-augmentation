@@ -22,7 +22,7 @@ copyright = '2020, keshav sharma'
 author = 'keshav sharma'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.8'
+release = '0.1.0'
 
 master_doc = 'index'
 
