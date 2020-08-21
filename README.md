@@ -18,6 +18,7 @@ pip install augment-auto
 Install from github: </br>
 ```python
 git clone https://github.com/keshavoct98/image-augmentation.git
+cd image-augmentation-master
 python setup.py install
 ```
 
