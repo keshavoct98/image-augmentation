@@ -1,5 +1,8 @@
-Welcome to augment-auto's documentation!
-========================================
+============
+augment-auto
+============
+
+A python image augmentation library based on opencv and numpy. It can be used for augmenting images in both image classification and object detection tasks. Many different techniques of augmentation are supported, which can be clustered into three major types - geometric transformations, photometric transformations and kernel-based transformations. Library has support for images with bounding boxes as well.
 
 
 Installation
@@ -124,6 +127,7 @@ Features
     
     .. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_geometric1.jpg
 
+|
 
 2. **Photometric Features** - Image augmentation with photometric transformation of images.
 
@@ -182,6 +186,8 @@ Features
         img_new = addNoise(img, 'poisson', noise_amount = 0.5)
     
     .. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_photometric.jpg
+
+|
 
 3. **Kernel-based features**
 
