@@ -1,13 +1,14 @@
 Welcome to augment-auto's documentation!
 ========================================
 
+The documentation is organised as follows:
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 1
+    :caption: License and terms
 
-    Installation guide
-    Features
+    content/LICENSE
+
 
 Installation guide
 ##################

@@ -6,7 +6,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="augment_auto",
-    version="0.0.6",
+    version="0.0.8",
     author="keshav sharma",
     author_email="keshavoct98@gmail.com",
     description="An image augmentation library for object detection and image classification tasks.",
