@@ -1,16 +1,8 @@
 Welcome to augment-auto's documentation!
 ========================================
 
-The documentation is organised as follows:
 
-.. toctree::
-    :maxdepth: 1
-    :caption: License and terms
-
-    content/LICENSE
-
-
-Installation guide
+Installation
 ##################
 
 * **Install using pip**:
@@ -255,3 +247,28 @@ Features
         img_new = blur(img, 'median', median_ksize = 11)
     
     .. image:: https://github.com/keshavoct98/image-augmentation/raw/master/images/out_kernel_based.jpg
+
+LICENSE
+#######
+
+    MIT License
+    
+    Copyright (c) 2020 keshav sharma
+    
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+    
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+    
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
