@@ -1,6 +1,13 @@
 # augment-auto
-A python image augmentation library based on opencv and numpy. It can be used for augmenting images in both image classification and object detection tasks. Many different techniques of augmentation are supported, which can be clustered into three major types - geometric transformations, photometric transformations and kernel-based transformations.
-Library has support for images with bounding boxes as well.
+A python image augmentation library based on opencv and numpy. It can be used for augmenting images in both image classification and object detection tasks. Many different techniques of augmentation are supported, which can be clustered into three major types - geometric transformations, photometric transformations and kernel-based transformations. Library has support for images with bounding boxes as well.
+
+![Build Status](https://img.shields.io/badge/augment--auto-v0.1.0-informational)
+![license](https://img.shields.io/badge/license-MIT-informational)
+![size](https://img.shields.io/badge/size-5.1mb-informational)
+![python version support](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-informationall)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+![docs](https://img.shields.io/badge/docs-https%3A%2F%2Faugment--auto.readthedocs.io-informational)
+
 
 ### Installation
 Install using pip: </br>
