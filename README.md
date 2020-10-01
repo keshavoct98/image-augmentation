@@ -12,7 +12,7 @@ A python image augmentation library based on opencv and numpy. It can be used fo
 ### Installation
 Install using pip: </br>
 ```python
-pip install augment-auto
+pip install augment-auto==0.1.0
 ```
 
 Install from github: </br>
