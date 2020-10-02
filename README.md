@@ -78,7 +78,7 @@ img_new = blur(img, 'avg', ksize = (9,9))
 img_new = blur(img, 'gaussian', ksize = (9,9), gaussian_sigma = 0)
 img_new = blur(img, 'median', median_ksize = 11)
 ```
-<img src = 'https://github.com/keshavoct98/image-augmentation/raw/master/images/out_kernel_based.jpg' width = 100%>
+<img src = 'https://github.com/keshavoct98/image-augmentation/raw/master/images/out_kernel_based.jpg' width = 100%> 
 
 ### References
 1. https://numpy.org/doc/
